@@ -35,4 +35,21 @@ class TestTicTacToe < Minitest::Test
 		assert_equal(false, board.valid_position?(15))
 		assert_equal(true, board.valid_position?(7))
 	end
+
+	def test_for_full_board_false
+		board = Board.new
+		board.ttt_board = ['X', 'O',  'X', 'O', 'O', 'X', 'O', 'X', '']
+		assert_equal(false, board.full_board?)
+	end
+
+	def test_for_full_board_true
+		board = Board.new
+		board.ttt_board = ['X', 'O',  'X', 'O', 'O', 'X', 'O', 'X', 'O']
+		assert_equal(true, board.full_board?)
+	end
+
+	def test_valid_input
+		board = Board.new
+		assert_equal(false, board.valid_input?('m'))
+	end
 end
