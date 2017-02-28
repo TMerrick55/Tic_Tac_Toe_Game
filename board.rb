@@ -17,7 +17,7 @@ class Board
 		end
 	end
 
-	def full_board?
+	def full_board?()
 		if ttt_board.include?('')
 			false
 		else
@@ -34,6 +34,29 @@ class Board
 	end
 
 	def winner?(marker)
-		if ttt_board
+	winner = [
+			[0, 1, 2], 
+			[3, 4, 5], 
+			[6, 7, 8], 
+			[0, 3, 6], 
+			[1, 4, 7], 
+			[2, 5, 8], 
+			[0, 4, 8], 
+			[2, 4, 6]
+		]
+		
+		results = false
+		winner.each do |inner_array|
+			count = 0
+			inner_array.each do |value|
+				if ttt_board[value] == marker
+					count += 1
+					if count == 3
+						results = true
+					end
+				end
+			end
+		end
+		results
 	end
 end

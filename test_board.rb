@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require_relative 'board.rb'
 
 class TestTicTacToe < Minitest::Test
+	
 	def test_new_board
 		board = Board.new
 		assert_equal(Array.new(9, ''), board.ttt_board)
@@ -56,12 +57,14 @@ class TestTicTacToe < Minitest::Test
 		assert_equal(false, board.valid_input?(''))
 		assert_equal(false, board.valid_input?('@'))
 		assert_equal(true, board.valid_input?('X'))
+		assert_equal(true, board.valid_input?('o'))
+
 	end
 
 	def test_for_win_at_positions_0_1_2_with_X
 		board = Board.new
 		marker = 'X'
-		board.ttt_board =  ['X', 'X',  'X', 'O', 'O', 'X', 'O', 'X', 'O']
+		board.ttt_board =  ['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O']
 		assert_equal(true, board.winner?(marker))
 	end
 end
