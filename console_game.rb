@@ -36,15 +36,14 @@ class Console_Game
 
 	def change_player
 		if active_player == p2
-			active_player = p1
+			@active_player = p1
 		else
-			active_player = p2
+			@active_player = p2
 		end
-		puts active_player
 	end
 
 	def check_winner
-		if board.winner?(board)
+		if board.winner?(active_player.marker)
 			true
 		else
 			false

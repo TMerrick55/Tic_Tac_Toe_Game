@@ -18,12 +18,12 @@ game.update_position
 
 game.create_board 
 
-until game.check_winner || game.check_tie
-
-	game.change_player
+until game.check_winner
 	game.get_move
 	game.update_position
 	game.create_board
+		game.change_player
+
 end
 
 game.check_winner
