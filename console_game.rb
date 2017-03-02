@@ -35,10 +35,10 @@ class Console_Game
 	end
 
 	def change_player
-		if active_player == p2
-			@active_player = p1
-		else
+		if active_player == p1
 			@active_player = p2
+		else
+			@active_player = p1
 		end
 	end
 
