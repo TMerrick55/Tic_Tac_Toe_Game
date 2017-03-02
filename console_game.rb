@@ -45,17 +45,17 @@ class Console_Game
 
 	def check_winner
 		if board.winner?(board)
-			puts true
+			true
 		else
-			puts false
+			false
 		end
 	end
 
 	def check_tie
 		if board.full_board?(board)
-			puts 'Tied!'
+			true
 		else
-			puts 'Keep playing!'
+			false
 		end
 	end
 end
