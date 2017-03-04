@@ -40,13 +40,13 @@ class Test_Tic_Tac_Toe < Minitest::Test
 	def test_for_full_board_false
 		board = Board.new
 		board.ttt_board = ['X', 'O',  'X', 'O', 'O', 'X', 'O', 'X', '']
-		assert_equal(false, board.full_board?)
+		assert_equal(false, board.full_board?(board))
 	end
 
 	def test_for_full_board_true
 		board = Board.new
 		board.ttt_board = ['X', 'O',  'X', 'O', 'O', 'X', 'O', 'X', 'O']
-		assert_equal(true, board.full_board?)
+		assert_equal(true, board.full_board?(board))
 	end
 
 	def test_valid_input

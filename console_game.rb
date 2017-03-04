@@ -5,7 +5,7 @@ require_relative 'random.rb'
 
 class Console_Game
 
-		attr_accessor :board, :p1, :p2, :active_player
+		attr_accessor :p1, :p2, :board, :active_player, :move
 
 	def initialize(p1, p2)
 		@p1 = p1
@@ -15,7 +15,7 @@ class Console_Game
 	end
 
 	def intro_ttt
-		puts 'Welcome to Tic_Tac_Toe'
+		puts 'Welcome to Tic-Tac-Toe!'
 	end
 
 	def create_board
@@ -27,13 +27,17 @@ class Console_Game
 	end
 
 	def get_move
-		puts active_player.get_move(board.ttt_board)
+		@move = active_player.get_move(board.ttt_board)
 	end
 
 	def update_position
-		move = get_move
 		marker = active_player.marker
-		board.update_position(move, marker)
+		if board.valid_position?(@move)
+			board.update_position(@move, marker)
+		else
+			puts "invalid move, please choose again"
+			get_move
+		end
 	end
 
 	def change_player

@@ -1,4 +1,5 @@
 class Board
+	
 	attr_accessor :ttt_board
 
 	def initialize
@@ -17,7 +18,7 @@ class Board
 		end
 	end
 
-	def full_board?()
+	def full_board?(board)
 		if ttt_board.include?('')
 			false
 		else
@@ -26,7 +27,7 @@ class Board
 	end
 
 	def valid_input?(input)
-		if input.match(/[XxOo]/)
+		if input.match(/[xXoO]/)
 			true
 		else
 			false
