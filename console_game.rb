@@ -24,6 +24,7 @@ class Console_Game
 	  puts " #{board.ttt_board[3]} | #{board.ttt_board[4]} | #{board.ttt_board[5]} "
 	  puts "--------"
 	  puts " #{board.ttt_board[6]} | #{board.ttt_board[7]} | #{board.ttt_board[8]} "
+	  puts "                                                                       "
 	end
 
 	def get_move
@@ -35,7 +36,7 @@ class Console_Game
 		if board.valid_position?(@move)
 			board.update_position(@move, marker)
 		else
-			puts "invalid move, please choose again"
+			puts "invalid position, please choose again"
 			get_move
 		end
 	end
