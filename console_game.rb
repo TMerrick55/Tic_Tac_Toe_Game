@@ -25,6 +25,8 @@ class Console_Game
 	  puts "--------"
 	  puts " #{board.ttt_board[6]} | #{board.ttt_board[7]} | #{board.ttt_board[8]} "
 	  puts "                                                                       "
+	  puts "It's #{active_player.marker}'s turn"
+	  puts "                                                                       "
 	end
 
 	def get_move
