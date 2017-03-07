@@ -1,4 +1,5 @@
 class Unbeatable
+require_relative 'board.rb'
 
 	attr_accessor :marker
 
@@ -44,6 +45,7 @@ class Unbeatable
 
 				if win_combo.count(marker) == 2 && win_combo.count('') == 1
 					winning_index = win_combo.index('')
+					results = winning_pos[index][winning_index]
 				elsif win_combo.count(opponent) == 2 && win_combo.count('') == 1
 					winning_index = win_combo.index('')
 					results = winning_pos[index][winning_index]
