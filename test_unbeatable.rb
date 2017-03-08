@@ -61,4 +61,22 @@ class TestUnbeatable < Minitest::Test
 		ttt_board = ['O', 'O', '', '', '', 'X', '', '', 'X']
 		assert_equal(2, player.get_move(ttt_board))
 	end
+
+	def test_fork_1
+		player = Unbeatable.new('X')
+		ttt_board = ['O', 'X', '', 'X', '', '', '', '', 'O']
+		assert_equal(4, player.check_fork(ttt_board))
+	end
+
+	def test_fork_2
+		player = Unbeatable.new('O')
+		ttt_board = ['X', '', '', '', 'X', 'O', '', 'O', '']
+		assert_equal(8, player.check_fork(ttt_board))
+	end
+
+	def test_fork_3
+		player = Unbeatable.new('X')
+		ttt_board = ['', '', 'X', '', 'X', '', 'O', '', 'O']
+		assert_equal(1, player.check_fork(ttt_board))
+	end
 end
