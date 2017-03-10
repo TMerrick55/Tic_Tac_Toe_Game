@@ -110,12 +110,12 @@ end
 
 	def block_fork(ttt_board)
 		
-		opponent = 'O'
+		opponent = 'X'
 
-		if marker == 'O'
-			opponent = 'X'
-		else
+		if marker == 'X'
 			opponent = 'O'
+		else
+			opponent = 'X'
 		end
 
 		array_fork = [
