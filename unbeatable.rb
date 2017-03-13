@@ -106,7 +106,6 @@ require_relative 'board.rb'
 			end
 			results
 	end
-end
 
 	def block_fork(ttt_board)
 		
@@ -159,6 +158,7 @@ end
 		end
 		move_2
 	end
+end
 
 
 
