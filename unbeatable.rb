@@ -133,7 +133,7 @@ require_relative 'board.rb'
 
 		key_2 = []
 		fork_positions.each_with_index do |fork_combo, fork_index|
-			if fork_combo.count(marker) == 1 && fork_combo.count('') == 2
+			if fork_combo.count(opponent) == 1 && fork_combo.count('') == 2
 				key_2 << fork_index
 			end
 		end
