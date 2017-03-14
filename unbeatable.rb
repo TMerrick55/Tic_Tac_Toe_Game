@@ -117,7 +117,7 @@ require_relative 'board.rb'
 				[ttt_board[2], ttt_board[4], ttt_board[6]]
 								]
 			
-			results = 10
+			results = 9
 
 			board_position.each_with_index do |win_combo, index|
 
