@@ -2,7 +2,6 @@ require 'sinatra'
 
 require_relative 'board.rb'
 require_relative 'unbeatable.rb'
-require_relative 'Play_Console_Game.rb'
 
 enable :sessions
 
