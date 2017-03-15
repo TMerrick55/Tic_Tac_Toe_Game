@@ -1,2 +1,2 @@
-require './pp.rb'
+require './app.rb'
 run TicTacToe
