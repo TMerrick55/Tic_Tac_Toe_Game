@@ -1,5 +1,4 @@
 GEM
-
   remote: https://rubygems.org/
   specs:
     rack (1.6.5)
@@ -14,7 +13,6 @@ GEM
     tilt (2.0.6)
 
 PLATFORMS
-
   x64-mingw32
 
 DEPENDENCIES
@@ -23,5 +21,4 @@ DEPENDENCIES
   sinatra
 
 BUNDLED WITH
-
    1.14.6
