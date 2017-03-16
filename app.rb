@@ -8,9 +8,7 @@ enable :sessions
 class TicTacToe < Sinatra::Base
 
 	get '/' do
-		
 		erb :welcome
-	
 	end
 
 	post '/get_opponent' do
