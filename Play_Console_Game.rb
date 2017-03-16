@@ -5,8 +5,8 @@ require_relative 'console_game.rb'
 
 # game=Console_Game.new(Random.new('X'), Human.new('O'))
 # game=Console_Game.new(Random.new('X'), Random.new('O'))
-# game=Console_Game.new(Human.new('X'), Human.new('O'))
-game=Console_Game.new(Unbeatable.new('X'), Unbeatable.new('O'))
+game=Console_Game.new(Human.new('X'), Human.new('O'))
+# game=Console_Game.new(Unbeatable.new('X'), Unbeatable.new('O'))
 
 
 game.intro_ttt
