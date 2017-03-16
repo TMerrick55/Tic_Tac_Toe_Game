@@ -5,8 +5,11 @@ require_relative 'sequential.rb'
 require_relative 'random.rb'
 require_relative 'unbeatable.rb'
 
+enable :sessions
 
-class TicTacToe < Sinatra::Base
+def fill_move
+		active_player.fill_move(board.ttt_board)
+	end
 
 	get '/' do
 		erb :welcome
