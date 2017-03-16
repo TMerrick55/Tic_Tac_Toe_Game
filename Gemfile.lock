@@ -17,5 +17,8 @@ DEPENDENCIES
   rack-test
   sinatra
 
+RUBY VERSION
+   ruby 2.3.3p222
+
 BUNDLED WITH
-   1.14.4
+   1.14.6
