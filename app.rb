@@ -59,4 +59,3 @@ post '/board' do
 	position7 = params[:pos7]
 	position8 = params[:pos8]
 end
-end
