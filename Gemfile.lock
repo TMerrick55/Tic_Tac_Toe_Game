@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     rack (1.6.5)
     rack-protection (1.5.3)
@@ -13,9 +13,11 @@ GEM
     tilt (2.0.6)
 
 PLATFORMS
-  ruby
+  x86-mingw32
 
 DEPENDENCIES
+  rack
+  rack-test
   sinatra
 
 BUNDLED WITH

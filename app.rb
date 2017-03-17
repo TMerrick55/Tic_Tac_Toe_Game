@@ -7,6 +7,8 @@ require_relative 'unbeatable.rb'
 
 enable :sessions
 
+class TicTacToe < Sinatra::Base
+
 	get '/' do
 		erb :welcome
 	end
@@ -58,4 +60,5 @@ post '/board' do
 	position6 = params[:pos6]
 	position7 = params[:pos7]
 	position8 = params[:pos8]
+end
 end
