@@ -16,6 +16,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack
+  rack-test
   sinatra
 
 BUNDLED WITH
