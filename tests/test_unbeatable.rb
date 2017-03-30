@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'unbeatable.rb'
+require_relative '../unbeatable.rb'
 
 class TestUnbeatable < Minitest::Test
 

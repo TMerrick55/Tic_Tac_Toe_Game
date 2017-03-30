@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'random.rb'
+require_relative '../random.rb'
 
 class Test_Random_AI < Minitest::Test
 
