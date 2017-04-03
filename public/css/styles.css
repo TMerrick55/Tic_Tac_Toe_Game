@@ -1,0 +1,41 @@
+table {
+  height: 50%;
+  width: 50%;
+  border-collapse: collapse;
+  font-size: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+ 
+td {
+  width: 25%;
+  border: 6px solid #222;
+}
+td::after {
+  content: '';
+  display: block;
+  margin-top: 50%;
+}
+ 
+td {
+  border: 6px solid #222;
+}
+ 
+td:first-of-type {
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+ 
+td:nth-of-type(2) {
+  border-top-color: transparent;
+}
+ 
+td:nth-of-type(3) {
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+ 
+tr:nth-of-type(3) td {
+  border-bottom-color: transparent;
+}
+

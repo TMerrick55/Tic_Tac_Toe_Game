@@ -89,11 +89,11 @@ enable :sessions
 	end
 
 	get '/win' do
-		'Winner!'
+		erb :win, locals: {active_player: session[:active_player].marker}
 	end
 
 	get '/tie_game' do
-		'Tie game!'
+		erb :tie_game
 	end		
 
 	# pos0 = "#{board.ttt_board[0]}"
