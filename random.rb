@@ -1,4 +1,4 @@
-class Random
+class RandomAI
 
 	attr_accessor :marker
 

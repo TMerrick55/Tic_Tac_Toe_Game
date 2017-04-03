@@ -1,40 +1,67 @@
 Welcome to Tic-Tac-Toe!
 
+<p>It's <%=active_player%>'s turn!</p>
+
 <form action= '/user_choice' method= 'post'>
 
 <table>
 	<tr>
-		<td><input type= "submit" name= "square_spot" value= '0' <%=board.ttt_board[0]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '1' <%=board.ttt_board[1]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '2' <%=board.ttt_board[2]%>></td>
-		<!-- SEE SHIRLEY'S -->
+		<td><%=board.ttt_board[0]%></td>
+		<td><%=board.ttt_board[1]%></td>
+		<td><%=board.ttt_board[2]%></td>
 	</tr>
 	<tr>
-		<td><input type= "submit" name= "square_spot" value= '3' <%=board.ttt_board[3]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '4' <%=board.ttt_board[4]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '5' <%=board.ttt_board[5]%>></td>
-		<!-- SEE SHIRLEY'S -->
+		<td><%=board.ttt_board[3]%></td>
+		<td><%=board.ttt_board[4]%></td>
+		<td><%=board.ttt_board[5]%></td>
 	</tr>
 	<tr>
-		<td><input type= "submit" name= "square_spot" value= '6' <%=board.ttt_board[6]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '7' <%=board.ttt_board[7]%>></td>
-		<td><input type= "submit" name= "square_spot" value= '8' <%=board.ttt_board[8]%>></td>
-		<!-- SEE SHIRLEY'S -->
+		<td><%=board.ttt_board[6]%></td>
+		<td><%=board.ttt_board[7]%></td>
+		<td><%=board.ttt_board[8]%></td>
 	</tr>
 </table>
-<!-- 
-<select name= "square_spot">
-	<option value= "0">0</option>
-	<option value= "1">1</option>
-	<option value= "2">2</option>
-	<option value= "3">3</option>
-	<option value= "4">4</option>
-	<option value= "5">5</option>
-	<option value= "6">6</option>
-	<option value= "7">7</option>
-	<option value= "8">8</option>
-</select>
 
-<input type= 'submit'> -->
+<p><select name= "square_spot">
+
+	<%if board.ttt_board[0] == "" %>
+		<option value= "0">0</option>
+	<%end%>
+
+	<%if board.ttt_board[1] == "" %>
+		<option value= "1">1</option>
+	<%end%>		
+
+	<%if board.ttt_board[2] == "" %>
+		<option value= "2">2</option>
+	<%end%>
+
+	<%if board.ttt_board[3] == "" %>
+		<option value= "3">3</option>
+	<%end%>
+
+	<%if board.ttt_board[4] == "" %>
+		<option value= "4">4</option>
+	<%end%>
+	
+	<%if board.ttt_board[5] == "" %>
+		<option value= "5">5</option>
+	<%end%>	
+
+	<%if board.ttt_board[6] == "" %>
+		<option value= "6">6</option>
+	<%end%>
+	
+	<%if board.ttt_board[7] == "" %>
+		<option value= "7">7</option>
+	<%end%>
+	
+	<%if board.ttt_board[8] == "" %>
+		<option value= "8">8</option>
+	<%end%>
+
+</select></p>
+
+<p><input type= 'submit'></p>
 
 </form>

@@ -15,43 +15,86 @@ enable :sessions
 	end
 
 	post '/get_opponent' do
+		session[:human] = nil
 		session[:board] = Board.new
 		# board = session[:board]
-		opponent = params[:opponent]
+		session[:opponent] = params[:opponent]
 
-			if opponent == 'Human'
+
+		session[:player_1] = Human.new('X')
+		session[:active_player] = session[:player_1]
+
+			if session[:opponent] == 'Human'
 				session[:opponent] = Human.new('O')
+				session[:human] = 'human'
 				redirect '/board'
 
-			# elsif opponent == 'Sequential'
-			# 	session[:opp] = Sequential.new('O')
+			elsif session[:opponent] == 'Sequential'
+				session[:opponent] = Sequential.new('O')
+				redirect '/board'
 
-			# elsif opponent == 'Random'
-			# 	session[:opp] = Random.new('O')
+			elsif session[:opponent] == 'Random'
+				session[:opponent] = RandomAI.new('O')
+				redirect '/board'
 
-			# else opponent == 'Unbeatable'
-			# 	session[:opp] = Unbeatable.new('O')
+			else session[:opponent] == 'Unbeatable'
+				session[:opponent] = Unbeatable.new('O')
+				redirect '/board'
+
 			end
 	end
 
 	get '/board' do
-		erb :game_board, :locals => {:board => session[:board], :opponent => session[:opponent]}
+		erb :game_board, :locals => {:board => session[:board], :opponent => session[:opponent], :player_1 => session[:player_1], :active_player => session[:active_player].marker}
+		# "#{session[:opponent].class}"
 	end
 
-	# MIGHT ADD TTT_BOARD TO 'SESSION[:BOARD]' TO ABOVE ERB
+	get '/get_move' do
+		move = session[:active_player].get_move(session[:board].ttt_board)
+		session[:board].update_position(move, session[:active_player].marker)
+		# session[:board].update_position(move, 'O')
+
+		redirect '/check_for_win_or_tie'
+		# "#{session[:active_player].marker}"
+	end
 
 	post '/user_choice' do
-
 		choice = params['square_spot'].to_i
-		marker = 'X'
-		session[:board].ttt_board[choice] = 'X'
-		# session[:board].update_position(choice, marker)
-		# redirect '/board'
+		session[:board].update_position(choice, session[:active_player].marker)
+		redirect '/check_for_win_or_tie'
+	end
 
-		# CHANGE AS NEEDED BASED ON SHIRLEY'S '/move'
+	get '/check_for_win_or_tie' do
+		if session[:board].winner?(session[:active_player].marker)
+			redirect '/win'
+		elsif session[:board].full_board?(:ttt_board)
+			redirect 'tie_game'
+		else
+			redirect '/change_player'
+		end
+	end
 
-		"#{session[:board].ttt_board} here"
+	get '/change_player' do
+		if session[:active_player] == session[:player_1]
+			session[:active_player] = session[:opponent]
+		else
+			session[:active_player] = session[:player_1]
+		end
+		
+		if session[:active_player] == session[:player_1] || (session[:active_player] == session[:opponent] && session[:human] == 'human')
+			redirect '/board'
+		else
+			redirect '/get_move'
+		end
+	end
 
+	get '/win' do
+		'Winner!'
+	end
+
+	get '/tie_game' do
+		'Tie game!'
+	end		
 
 	# pos0 = "#{board.ttt_board[0]}"
 	# pos1 = "#{board.ttt_board[1]}"
@@ -67,7 +110,7 @@ enable :sessions
 
 		# erb :board, :locals => {:opponent => session[:opponent], :board => board, :pos0 => pos0, :pos1 => pos1, :pos2 => pos2, :pos3 => pos3, :pos4 => pos4, :pos5 => pos5, :pos6 => pos6, :pos7 => pos7, :pos8 => pos8}
 
-end
+
 
 # post '/board' do
 
@@ -82,5 +125,4 @@ end
 # 	position6 = params[:pos6]
 # 	position7 = params[:pos7]
 # 	position8 = params[:pos8]
-# end
 # end
