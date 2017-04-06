@@ -47,6 +47,7 @@ enable :sessions
 	get '/board' do
 		erb :game_board, :locals => {:board => session[:board], :opponent => session[:opponent], :player_1 => session[:player_1], :active_player => session[:active_player].marker}
 		# "#{session[:opponent].class}"
+		# "#{session[:board].ttt_board}"
 	end
 
 	get '/get_move' do
@@ -89,11 +90,12 @@ enable :sessions
 	end
 
 	get '/win' do
-		erb :win, locals: {active_player: session[:active_player].marker}
+		erb :win, locals: {board: session[:board], active_player: session[:active_player].marker}
+		# "#{session[:board].ttt_board}"
 	end
 
 	get '/tie_game' do
-		erb :tie_game
+		erb :tie_game, locals: {board: session[:board], active_player: session[:active_player].marker}
 	end		
 
 	# pos0 = "#{board.ttt_board[0]}"
