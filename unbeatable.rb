@@ -10,35 +10,35 @@ require_relative 'board.rb'
 	def get_move(ttt_board)
 	
 		if get_win(ttt_board) < 9
-			p 'get_win'
+			# p 'get_win'
 			move = get_win(ttt_board)
 		elsif 
 			get_block(ttt_board) < 9
-			p 'get_block'
+			# p 'get_block'
 			move = get_block(ttt_board)
 		elsif
 			check_fork(ttt_board) < 9
-			p 'check_fork'
+			# p 'check_fork'
 			move = check_fork(ttt_board)
 		elsif
 			block_fork(ttt_board) < 9
-			p 'block_fork'
+			# p 'block_fork'
 			move = block_fork(ttt_board)
 		elsif
 			take_center(ttt_board) < 9
-			p 'take_center'
+			# p 'take_center'
 			move = take_center(ttt_board)
 		elsif
 			take_corner(ttt_board) < 9
-			p 'take_corner'
+			# p 'take_corner'
 			move = take_corner(ttt_board)
 		elsif
 			take_empty_corner(ttt_board) < 9
-			p 'take_empty_corner'
+			# p 'take_empty_corner'
 			move = take_empty_corner(ttt_board)
 		elsif
 			take_empty_side(ttt_board) < 9
-			p 'take_empty_side'
+			# p 'take_empty_side'
 			move = take_empty_side(ttt_board)		
 		end
 	end

@@ -8,8 +8,8 @@ class Human
 		@marker = marker
 	end
 
-	# def get_move(board)
-	# 	print 'Enter 0-8 to choose your square: '
-	# 	move = gets.chomp.to_i
-	# end
+	def get_move(board)
+		print 'Enter 0-8 to choose your square: '
+		move = gets.chomp.to_i
+	end
 end
