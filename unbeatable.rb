@@ -29,9 +29,9 @@ require_relative 'board.rb'
 			# p 'take_center'
 			move = take_center(ttt_board)
 		elsif
-			take_corner(ttt_board) < 9
+			take_opposite_corner(ttt_board) < 9
 			# p 'take_corner'
-			move = take_corner(ttt_board)
+			move = take_opposite_corner(ttt_board)
 		elsif
 			take_empty_corner(ttt_board) < 9
 			# p 'take_empty_corner'
@@ -252,33 +252,32 @@ require_relative 'board.rb'
 		if ttt_board[0] == opponent && ttt_board[8] == ''
 			move = 8
 		
+		elsif ttt_board[2] == opponent && ttt_board[6] == ''
+			move = 6
+
 		elsif ttt_board[6] == opponent && ttt_board[2] == ''
 			move = 2
 
 		elsif ttt_board[8] == opponent && ttt_board[0] == ''
 			move = 0
 
-		elsif ttt_board[2] == opponent && ttt_board[6] == ''
-			move = 6
-
 		else
 			move = 9
 		end
+		move
 	end
 
 	def take_empty_corner(ttt_board)
-		corners = [0, 2, 6, 8]
-		empty_corner = []
-
-		corners.each do |empty|
-			if ttt_board[empty] == ''
-				empty_corner << empty
-			end
-		end
-
-		if empty_corner.length > 0
-			move = empty_corner.shift
-		else 
+		
+		if ttt_board[0] == ''
+			move = 0
+		elsif ttt_board[2] == ''
+			move = 2
+		elsif ttt_board[6] == ''
+			move = 6
+		elsif ttt_board[8] == ''
+			move = 8
+		else
 			move = 9
 		end
 		move
