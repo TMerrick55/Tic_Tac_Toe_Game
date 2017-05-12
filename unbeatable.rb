@@ -235,11 +235,11 @@ require_relative 'board.rb'
 		if ttt_board[4] == ""
 			move = 4
 		else
-			move = 10
+			move = 9
 		end
 	end
 
-	def take_corner(ttt_board)
+	def take_opposite_corner(ttt_board)
 		opponent = 'X'
 
 		if marker == 'X'
@@ -262,13 +262,13 @@ require_relative 'board.rb'
 			move = 6
 
 		else
-			move = 10
+			move = 9
 		end
 	end
 
 	def take_empty_corner(ttt_board)
-		empty_corner = []
 		corners = [0, 2, 6, 8]
+		empty_corner = []
 
 		corners.each do |empty|
 			if ttt_board[empty] == ''
@@ -279,8 +279,9 @@ require_relative 'board.rb'
 		if empty_corner.length > 0
 			move = empty_corner.shift
 		else 
-			move = 10
+			move = 9
 		end
+		move
 	end
 
 	def take_empty_side(ttt_board)
@@ -296,7 +297,7 @@ require_relative 'board.rb'
 		if empty_side.length > 0
 			move = empty_side.shift
 		else
-			move = 10
+			move = 9
 		end
 		move
 		end

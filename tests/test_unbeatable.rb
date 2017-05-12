@@ -107,43 +107,73 @@ class TestUnbeatable < Minitest::Test
 	def test_take_center_2
 		player = Unbeatable.new('O')
 		ttt_board = ['X', 'O', 'X', '', 'O', '', 'O', '', 'X']
-		assert_equal(10, player.take_center(ttt_board))
+		assert_equal(9, player.take_center(ttt_board))
 	end
 
 	def test_take_center_3
 		player = Unbeatable.new('O')
 		ttt_board = ['X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O']
-		assert_equal(10, player.take_center(ttt_board))
-	end
-
-	def test_take_opposite_corner
-		player = Unbeatable.new('O')
-		ttt_board = ['X', '', '', '', '', '', '', '', '']
-		assert_equal(8, player.take_corner(ttt_board))
-	end
-
-	def test_take_opposite_corner_O
-		player = Unbeatable.new('X')
-		ttt_board = ['O', '', '', '', '', '', '', '', '']
-		assert_equal(8, player.take_corner(ttt_board))
-	end
-
-	def test_take_opposite_corner_6
-		player = Unbeatable.new('O')
-		ttt_board = ['', '', '', '', '', '', 'X', '', '']
-		assert_equal(2, player.take_corner(ttt_board))
+		assert_equal(9, player.take_center(ttt_board))
 	end
 
 	def test_take_opposite_corner_zero
 		player = Unbeatable.new('O')
-		ttt_board = ['', 'O', '', 'O', 'X', '', '', '', 'X']
-		assert_equal(0, player.take_corner(ttt_board))
+		ttt_board = ['', '', 'O', '', 'X', '', 'X', 'O', 'X']
+		assert_equal(0, player.take_opposite_corner(ttt_board))
 	end
 
-	def test_take_opposite_corner_six
+	def test_take_opposite_corner_2
+		player = Unbeatable.new('X')
+		ttt_board = ['X', '', '', '', 'O', '', 'O', 'X', 'O']
+		assert_equal(2, player.take_opposite_corner(ttt_board))
+	end
+
+	def test_take_opposite_corner_6
 		player = Unbeatable.new('O')
-		ttt_board = ['X', 'O', '', 'O', 'X', '', 'X', '', 'X']
-		assert_equal(2, player.take_corner(ttt_board))
+		ttt_board = ['X', 'O', 'X', '', 'X', '', '', '', 'O']
+		assert_equal(6, player.take_opposite_corner(ttt_board))
+	end
+
+	def test_take_opposite_corner_8
+		player = Unbeatable.new('O')
+		ttt_board = ['X', 'O', 'X', '', 'X', '', 'O', '', '']
+		assert_equal(8, player.take_opposite_corner(ttt_board))
+	end
+
+	def test_take_empty_corner_zero
+		player = Unbeatable.new('O')
+		ttt_board = ['', '', 'X', '', 'O', '', 'O', '', 'X']
+		assert_equal(0, player.take_empty_corner(ttt_board))
+	end
+
+	def test_take_empty_corner_2
+		player = Unbeatable.new('X')
+		ttt_board = ['O', '', '', '', 'X', '', 'O', '', 'X']
+		assert_equal(2, player.take_empty_corner(ttt_board))
+	end
+
+	def test_take_empty_corner_6
+		player = Unbeatable.new('O')
+		ttt_board = ['X', '', 'O', '', 'X', '', '', '', 'O']
+		assert_equal(6, player.take_empty_corner(ttt_board))
+	end
+
+	def test_take_empty_corner_8
+		player = Unbeatable.new('X')
+		ttt_board = ['X', '', 'O', '', 'O', '', 'X', '', '']
+		assert_equal(8, player.take_empty_corner(ttt_board))
+	end
+
+	def test_no_empty_corners_O
+		player = Unbeatable.new('O')
+		ttt_board = ['X', '', 'O', '', '', '', 'O', '', 'X']
+		assert_equal(9, player.take_empty_corner(ttt_board))
+	end
+
+	def test_no_empty_corners_X
+		player = Unbeatable.new('X')
+		ttt_board = ['X', '', 'X', '', '', '', 'O', '', 'O']
+		assert_equal(9, player.take_empty_corner(ttt_board))
 	end
 
 	def test_take_empty_side_two
