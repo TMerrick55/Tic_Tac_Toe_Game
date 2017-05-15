@@ -2,8 +2,9 @@ class Board
 	
 	attr_accessor :ttt_board
 
-	def initialize
-		@ttt_board = Array.new(9, '')
+	def initialize(board_size)
+		spaces = board_size * board_size
+		@ttt_board = Array.new(spaces, '')
 	end
 
 	def update_position(position, marker)
