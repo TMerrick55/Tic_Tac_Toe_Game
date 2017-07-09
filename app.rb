@@ -16,7 +16,7 @@ enable :sessions
 
 	post '/get_opponent' do
 		session[:human] = nil
-		session[:board] = Board.new
+		session[:board] = Board.new('spaces', 'board_side', 'length_of_single_side')
 		# board = session[:board]
 		session[:opponent] = params[:opponent]
 

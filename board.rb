@@ -2,8 +2,11 @@ class Board
 	
 	attr_accessor :ttt_board
 
-	def initialize(board_size)
-		spaces = board_size * board_size
+	# Now when I call a new instance of the board class, I need to pass in the size of the new board in the initialize function. Google how to do so ASAP.
+	def initialize(spaces, board_side, length_of_single_side)
+		spaces = board_side.to_i * board_side.to_i
+		board_side = length_of_single_side
+		length_of_single_side = []
 		@ttt_board = Array.new(spaces, '')
 	end
 
