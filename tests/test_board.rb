@@ -623,10 +623,10 @@ class Test_Tic_Tac_Toe_markers_8_by_8 < Minitest::Test
 		assert_equal(false, board.valid_input?('^'))
 	end
 
-	def test_for_win_at_positions_0_1_2_3_4_5_6_7_with_X_8_by_8
+	def test_for_win_at_positions_8_9_10_11_12_13_14_15_with_X_8_by_8
 		board = Board.new(64, 8, 8)
 		marker = 'X'
-	#  	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	#  	board.ttt_board = ['', '', '', '', '', '', '', '', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
 		assert_equal(true, board.winner_8_by_8?(marker))
 	end
 
