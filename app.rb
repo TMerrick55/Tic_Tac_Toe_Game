@@ -66,7 +66,23 @@ enable :sessions
 	end
 
 	get '/check_for_win_or_tie' do
-		if session[:board].winner?(session[:active_player].marker)
+		if session[:board].winner_3_by_3?(session[:active_player].marker)
+			redirect '/win'
+			if session[:board].winner_4_by_4?(session[:active_player].marker)
+				redirect '/win'
+				if session[:board].winner_5_by_5?(session[:active_player].marker)
+					redirect '/win'
+					if session[:board].winner_6_by_6?(session[:active_player].marker)
+						redirect '/win'
+						if session[:board].winner_7_by_7?(session[:active_player].marker)
+							redirect '/win'
+						end
+					end
+				end
+			end
+		end
+
+		if session[:board].winner_7_by_7?(session[:active_player].marker)
 			redirect '/win'
 		elsif session[:board].full_board?(:ttt_board)
 			redirect 'tie_game'
