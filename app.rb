@@ -27,21 +27,29 @@ enable :sessions
 			if session[:opponent] == 'Human'
 				session[:opponent] = Human.new('O')
 				session[:human] = 'human'
-				redirect '/board'
+				redirect '/board_size'
 
 			elsif session[:opponent] == 'Sequential'
 				session[:opponent] = Sequential.new('O')
-				redirect '/board'
+				redirect '/board_size'
 
 			elsif session[:opponent] == 'Random'
 				session[:opponent] = RandomAI.new('O')
-				redirect '/board'
+				redirect '/board_size'
 
 			else session[:opponent] == 'Unbeatable'
 				session[:opponent] = Unbeatable.new('O')
-				redirect '/board'
+				redirect '/board_size'
 
 			end
+	end
+
+	get '/board_size' do
+		# "Hello World"
+		session[:board] = Board.new(params[:board_size])
+		session[:active_player] = session[:player_1]
+		session[:board_size] = params[:board_size]
+		# This route needs further work. The above 3 sessions will need to be replaced with code similar to get '/board' do below.
 	end
 
 	get '/board' do
@@ -60,6 +68,8 @@ enable :sessions
 	end
 
 	post '/user_choice' do
+		# params['square spot'] has to be removed and replaced (REQUIRED FOR GAME TO CONTINUE PAST FIRST MOVE)
+		# Put ability to choose board size in separate view and re-connect pages accordingly.
 		choice = params['square_spot'].to_i
 		session[:board].update_position(choice, session[:active_player].marker)
 		redirect '/check_for_win_or_tie'
@@ -68,24 +78,8 @@ enable :sessions
 	get '/check_for_win_or_tie' do
 		if session[:board].winner_3_by_3?(session[:active_player].marker)
 			redirect '/win'
-			if session[:board].winner_4_by_4?(session[:active_player].marker)
-				redirect '/win'
-				if session[:board].winner_5_by_5?(session[:active_player].marker)
-					redirect '/win'
-					if session[:board].winner_6_by_6?(session[:active_player].marker)
-						redirect '/win'
-						if session[:board].winner_7_by_7?(session[:active_player].marker)
-							redirect '/win'
-						end
-					end
-				end
-			end
-		end
-
-		if session[:board].winner_7_by_7?(session[:active_player].marker)
-			redirect '/win'
 		elsif session[:board].full_board?(:ttt_board)
-			redirect 'tie_game'
+			redirect '/tie_game'
 		else
 			redirect '/change_player'
 		end
