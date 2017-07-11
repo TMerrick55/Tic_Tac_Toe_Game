@@ -1,7 +1,25 @@
 You chose <%=opponent%>
 
 
-<table>
+<table id="table_size">
+	<tr>
+		<td><input class="left_column_top" type='submit' value='<%=board.ttt_board[0]%>' name='choice'></td>
+		<td class="middle_column_top"><input class="square_size" type='submit' value='<%=board.ttt_board[1]%>' name='choice'></td>
+		<td><input class="right_column_top" type='submit' value='<%=board.ttt_board[2]%>' name='choice'></td>
+	</tr>
+	<tr>
+		<td class="left_column_middle"><input class="square_size" type='submit' value='<%=board.ttt_board[3]%>' name='choice'></td>
+		<td class="middle_column_middle"><input class="square_size" type='submit' value='<%=board.ttt_board[4]%>' name='choice'></td>
+		<td class="right_column_middle"><input class="square_size" type='submit' value='<%=board.ttt_board[5]%>' name='choice'></td>
+	</tr>
+	<tr>
+		<td><input class="left_column_bottom" type='submit' value='<%=board.ttt_board[6]%>' name='choice'></td>
+		<td class="middle_column_bottom"><input class="square_size" type='submit' value='<%=board.ttt_board[7]%>' name='choice'></td>
+		<td><input class="right_column_bottom" type='submit' value='<%=board.ttt_board[8]%>' name='choice'></td>
+	</tr>
+</table>
+
+<!-- <table>
 	<tr>
 		<td><%=board.ttt_board[0]%></td>
 		<td><%=board.ttt_board[1]%></td>
@@ -17,4 +35,4 @@ You chose <%=opponent%>
 		<td><%=board.ttt_board[7]%></td>
 		<td><%=board.ttt_board[8]%></td>
 	</tr>
-</table>
+</table> -->
