@@ -445,7 +445,7 @@ class Test_Tic_Tac_Toe_markers_6_by_6 < Minitest::Test
 		assert_equal(true, board.winner_6_by_6?(marker))
 	end
 
-	def test_for_win_at_positions_12_13_14_15_16_17_with_X_6_by_6
+	def test_for_win_at_positions_12_13_14_15_16_17_with_O_6_by_6
 		board = Board.new(36, 6, 6)
 		marker = 'O'
 		board.ttt_board = ['X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'X', 'X', 'O', 'X', 'O']
@@ -650,6 +650,7 @@ class Test_Tic_Tac_Toe_markers_8_by_8 < Minitest::Test
 	 	board.ttt_board = ['X', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X']
 		assert_equal(true, board.winner_8_by_8?(marker))
 	end
+end
 
 class Test_Tic_Tac_Toe_markers_9_by_9 < Minitest::Test
 
@@ -716,17 +717,17 @@ class Test_Tic_Tac_Toe_markers_9_by_9 < Minitest::Test
 		assert_equal(true, board.winner_9_by_9?(marker))
 	end
 
-	# def test_for_win_at_positions_0_10_20_30_40_50_60_70_80_with_O_9_by_9
+	# def test_for_win_at_positions_0_10_20_30_40_50_60_70_80_with_X_9_by_9
 	# 	board = Board.new(81, 9, 9)
-	# 	marker = 'O'
-	#  	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	# 	marker = 'X'
+	#  	board.ttt_board = ['X', '', 'O', 'X', '', 'X', '', 'O', 'X', 'X', 'X', 'O', 'O', '', 'X', 'O', '', 'O', '', '', 'X', '', 'O', '', '', '', 'O', 'O', '', '', 'X', 'X', 'O', '', 'X', '', 'X', 'X', '', '', 'X', 'O', '', '', 'O', '', '', '', 'X', 'O', 'X', '', 'O', 'X', 'O', 'O', 'O', '', 'X', 'O', 'X', 'O', '', '', 'X', 'X', 'O', '', 'X', 'X', 'O', '', 'O', '', 'O', 'X', 'O', '', 'O', '', 'X']
 	# 	assert_equal(true, board.winner_9_by_9?(marker))
 	# end
 
 	# def test_winner_with_empties_9_by_9
 	# 	board = Board.new(81, 9, 9)
-	# 	marker = 'X'
-	# 	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	# 	marker = 'O'
+	# 	board.ttt_board = ['O', '', 'X', 'O', '', 'O', '', 'X', 'O', 'O', 'O', 'X', 'X', '', 'O', 'X', '', 'X', '', '', 'O', '', 'X', '', '', '', 'X', 'X', '', '', 'O', 'O', 'X', '', 'O', '', 'O', 'O', '', '', 'O', 'X', '', '', 'X', '', '', '', 'O', 'X', 'O', '', 'X', 'O', 'X', 'X', 'X', '', 'O', 'X', 'O', 'X', '', '', 'O', 'O', 'X', '', 'O', 'O', 'X', '', 'X', '', 'X', 'O', 'X', '', 'X', '', 'O']
 	# 	assert_equal(true, board.winner_9_by_9?(marker))
 	# end
 
@@ -736,5 +737,4 @@ class Test_Tic_Tac_Toe_markers_9_by_9 < Minitest::Test
 	 	board.ttt_board = ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
 		assert_equal(true, board.winner_9_by_9?(marker))
 	end
-end
 end
