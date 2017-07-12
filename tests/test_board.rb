@@ -626,7 +626,7 @@ class Test_Tic_Tac_Toe_markers_8_by_8 < Minitest::Test
 	def test_for_win_at_positions_8_9_10_11_12_13_14_15_with_X_8_by_8
 		board = Board.new(64, 8, 8)
 		marker = 'X'
-	#  	board.ttt_board = ['', '', '', '', '', '', '', '', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	 	board.ttt_board = ['O', 'O', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'X', 'O', 'O']
 		assert_equal(true, board.winner_8_by_8?(marker))
 	end
 
@@ -640,14 +640,101 @@ class Test_Tic_Tac_Toe_markers_8_by_8 < Minitest::Test
 	def test_winner_with_empties_8_by_8
 		board = Board.new(64, 8, 8)
 		marker = 'X'
-	# 	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+		board.ttt_board = ['O', '', 'X', 'O', 'O', '', 'O', '', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'O', '', 'O', 'X', 'O', 'X', '', 'O', '', '', 'X', '', 'O', '', 'O', 'X', 'X', 'O', 'O', 'X', '', 'X', 'O', 'O', '', '', 'O', '', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', '', 'O', '', 'O', 'O', 'X', '', '', 'X', '', 'O']
 		assert_equal(true, board.winner_8_by_8?(marker))
 	end
 
 	def test_full_board_with_winner_8_by_8
 		board = Board.new(64, 8, 8)
 		marker = 'O'
-	#  	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	 	board.ttt_board = ['X', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X']
 		assert_equal(true, board.winner_8_by_8?(marker))
 	end
+
+class Test_Tic_Tac_Toe_markers_9_by_9 < Minitest::Test
+
+	def test_update_first_position_9_by_9
+		board = Board.new(81, 9, 9)
+		board.update_position(0, 'X')
+		assert_equal(['X', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''], board.ttt_board)
+	end
+
+	def test_first_position_X_and_second_O_9_by_9
+		board = Board.new(81, 9, 9)
+		board.update_position(0, 'X')
+		board.update_position(1, 'O')
+		assert_equal(['X', 'O', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''], board.ttt_board)
+	end
+
+	def test_update_partial_board_at_last_position_9_by_9
+		board = Board.new(81, 9, 9)
+		board.ttt_board = ['X', 'O', '', '', '', '', '', '', '', 'O', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'X']
+		board.update_position(80, 'X')
+		assert_equal(['X', 'O', '', '', '', '', '', '', '', 'O', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'X'], board.ttt_board)
+	end
+
+	def test_check_if_position_is_available_9_by_9
+		board = Board.new(81, 9, 9)
+		board.ttt_board = ['X', 'O', '', 'O', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+		assert_equal(true, board.valid_position?(5))
+		assert_equal(false, board.valid_position?(0))
+		assert_equal(true, board.valid_position?(15))
+		assert_equal(true, board.valid_position?(20))
+		assert_equal(true, board.valid_position?(28))
+		assert_equal(true, board.valid_position?(40))
+		assert_equal(true, board.valid_position?(50))
+		assert_equal(true, board.valid_position?(65))
+		assert_equal(false, board.valid_position?(84))
+		assert_equal(true, board.valid_position?(7))
+		assert_equal(false, board.valid_position?(3))
+	end
+
+	def test_for_full_board_false_9_by_9
+		board = Board.new(81, 9, 9)
+		board.ttt_board = ['X', 'O', '', 'X', '', '', '', 'O', 'O', '', 'X', 'O', '', 'X', '', 'O', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'O', 'X', '', 'O', '', '', '', 'X', 'X', '', 'X', 'X', 'O', 'X', 'O', 'O', 'O', '', 'O', '', 'O', '', '', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O', '', 'X', 'X']
+		assert_equal(false, board.full_board?(board))
+	end
+
+	def test_valid_input_9_by_9
+		board = Board.new(81, 9, 9)
+		assert_equal(false, board.valid_input?('m'))
+		assert_equal(true, board.valid_input?('x'))
+		assert_equal(true, board.valid_input?('O'))
+		assert_equal(false, board.valid_input?(''))
+		assert_equal(false, board.valid_input?('@'))
+		assert_equal(true, board.valid_input?('X'))
+		assert_equal(true, board.valid_input?('o'))
+		assert_equal(false, board.valid_input?('!'))
+		assert_equal(false, board.valid_input?('p'))
+		assert_equal(false, board.valid_input?('^'))
+	end
+
+	def test_for_win_at_positions_72_73_74_75_76_77_78_79_80_with_X_9_by_9
+		board = Board.new(81, 9, 9)
+		marker = 'X'
+	 	board.ttt_board = ['O', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+		assert_equal(true, board.winner_9_by_9?(marker))
+	end
+
+	# def test_for_win_at_positions_0_10_20_30_40_50_60_70_80_with_O_9_by_9
+	# 	board = Board.new(81, 9, 9)
+	# 	marker = 'O'
+	#  	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	# 	assert_equal(true, board.winner_9_by_9?(marker))
+	# end
+
+	# def test_winner_with_empties_9_by_9
+	# 	board = Board.new(81, 9, 9)
+	# 	marker = 'X'
+	# 	board.ttt_board = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+	# 	assert_equal(true, board.winner_9_by_9?(marker))
+	# end
+
+	def test_full_board_with_winner_9_by_9
+		board = Board.new(81, 9, 9)
+		marker = 'O'
+	 	board.ttt_board = ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
+		assert_equal(true, board.winner_9_by_9?(marker))
+	end
+end
 end
