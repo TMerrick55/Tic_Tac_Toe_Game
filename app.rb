@@ -46,7 +46,6 @@ enable :sessions
 
 	get '/board_size' do
 		erb :board_size, :locals => {:spaces => session[:spaces], :board_side => session[:board_side], :length_of_single_side => session[:length_of_single_side]}
-		# This route needs further work. The above 3 sessions will need to be replaced with code similar to get '/board' do below.
 	end
 
 	# post '/board_size' do
