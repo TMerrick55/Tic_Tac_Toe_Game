@@ -45,12 +45,13 @@ enable :sessions
 	end
 
 	get '/board_size' do
-		# "Hello World"
-		session[:board] = Board.new(params[:board_size])
-		session[:active_player] = session[:player_1]
-		session[:board_size] = params[:board_size]
+		erb :board_size, :locals => {:spaces => session[:spaces], :board_side => session[:board_side], :length_of_single_side => session[:length_of_single_side]}
 		# This route needs further work. The above 3 sessions will need to be replaced with code similar to get '/board' do below.
 	end
+
+	# post '/board_size' do
+	# 	"Hello World"
+	# end
 
 	get '/board' do
 		erb :game_board, :locals => {:board => session[:board], :opponent => session[:opponent], :player_1 => session[:player_1], :active_player => session[:active_player].marker}
