@@ -68,7 +68,7 @@ enable :sessions
 	end
 
 	post '/user_choice' do
-		# params['square spot'] has to be removed and replaced (REQUIRED FOR GAME TO CONTINUE PAST FIRST MOVE)
+		# params['square spot'] has been removed from the game board erb. Currently unknown if I should replace "params['square_spot'].to_i" with something else, what I don't know yet.
 		choice = params['square_spot'].to_i
 		session[:board].update_position(choice, session[:active_player].marker)
 		redirect '/check_for_win_or_tie'
