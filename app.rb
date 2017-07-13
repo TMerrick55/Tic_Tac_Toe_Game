@@ -46,10 +46,11 @@ enable :sessions
 
 	get '/board_size' do
 		erb :board_size, :locals => {:spaces => session[:spaces], :board_side => session[:board_side], :length_of_single_side => session[:length_of_single_side]}
+		# redirect '/board'
 	end
 
 	post '/board_size' do
-		"Hello World"
+		"I need to get this (post '/board_size' do) route done or I'm not going to finish this shit."
 	end
 
 	get '/board' do
