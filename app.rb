@@ -50,7 +50,7 @@ enable :sessions
 	end
 
 	post '/board_size' do
-		"I need to get this (post '/board_size' do) route done or I'm not going to finish this shit."
+		"I need to get this (post '/board_size' do) route done or I'm never going to finish this shit."
 	end
 
 	get '/board' do
