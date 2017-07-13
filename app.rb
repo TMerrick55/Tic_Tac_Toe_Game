@@ -69,7 +69,6 @@ enable :sessions
 
 	post '/user_choice' do
 		# params['square spot'] has to be removed and replaced (REQUIRED FOR GAME TO CONTINUE PAST FIRST MOVE)
-		# Put ability to choose board size in separate view and re-connect pages accordingly.
 		choice = params['square_spot'].to_i
 		session[:board].update_position(choice, session[:active_player].marker)
 		redirect '/check_for_win_or_tie'
