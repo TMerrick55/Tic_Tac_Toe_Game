@@ -48,9 +48,9 @@ enable :sessions
 		erb :board_size, :locals => {:spaces => session[:spaces], :board_side => session[:board_side], :length_of_single_side => session[:length_of_single_side]}
 	end
 
-	# post '/board_size' do
-	# 	"Hello World"
-	# end
+	post '/board_size' do
+		"Hello World"
+	end
 
 	get '/board' do
 		erb :game_board, :locals => {:board => session[:board], :opponent => session[:opponent], :player_1 => session[:player_1], :active_player => session[:active_player].marker}
