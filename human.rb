@@ -1,6 +1,5 @@
-require_relative 'console_game.rb'
-
 class Human
+require_relative 'console_game.rb'
 
 	attr_accessor :marker
 

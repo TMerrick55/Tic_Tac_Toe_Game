@@ -1,5 +1,4 @@
 class Unbeatable
-require_relative 'board.rb'
 
 	attr_accessor :marker
 
@@ -284,20 +283,18 @@ require_relative 'board.rb'
 	end
 
 	def take_empty_side(ttt_board)
-		empty_side = []
-		sides = [1, 3, 5, 7]
-
-		sides.each do |em|
-			if ttt_board[em] == ''
-				empty_side << em
-			end
-		end
-
-		if empty_side.length > 0
-			move = empty_side.shift
+		
+		if ttt_board[1] == ''
+			results = 1
+		elsif ttt_board[3] == ''
+			results = 3
+		elsif ttt_board[5] == ''
+			results = 5
+		elsif ttt_board[7] == ''
+			results = 7
 		else
-			move = 9
+			results = 9
 		end
-		move
-		end
+		results
 	end
+end
